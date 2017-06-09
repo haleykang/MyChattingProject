@@ -73,7 +73,7 @@ public class MyClientServerClass extends JFrame implements ActionListener {
 				// super.windowClosing(e);
 				System.out.println("종료 버튼 클릭");
 
-				mClient.sendMessage("/q");
+				mClient.sendMessage("*");
 				System.exit(0);
 
 				/*
@@ -94,7 +94,7 @@ public class MyClientServerClass extends JFrame implements ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		setBounds(800, 100, 400, 600);
-		setTitle("사용자 채팅 창");
+		setTitle(mNickName + "의 채팅 창");
 		setVisible(true);
 
 		mClient.setGui(this);

@@ -126,7 +126,7 @@ public class MyChattingServerBackClass {
 						sendMessage(mMsg);
 						mServerGUI.appendMsg(mMsg);
 
-						if (mMsg.equals("/q") == true) {
+						if (mMsg.equals("*") == true) {
 							System.out.println("if(mMsg.equals(\"/q\")==true)");
 							removeClient(nick);
 
