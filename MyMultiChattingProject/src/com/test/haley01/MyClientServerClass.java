@@ -49,52 +49,49 @@ public class MyClientServerClass extends JFrame implements ActionListener {
 
 		// 사용자가 tf에 입력 후 엔터 누를때 이벤트 처리
 		mTf.addActionListener(this);
-		
+
 		mBt.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 				String msg = "[" + mNickName + "] " + mTf.getText() + "\n";
 
 				mClient.sendMessage(msg);
 				// appendMsg(msg);
 
 				mTf.setText("");
-				
+
 			}
 		});
-		
-		
+
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				// TODO Auto-generated method stub
-			//	super.windowClosing(e);
+				// super.windowClosing(e);
 				System.out.println("종료 버튼 클릭");
-				
-				
-				String message = mNickName + "님이 퇴장하셨습니다.\n";
-				
-				// 서버에 접속 중인 모든 사용자에게 메세지 전송
-				mClient.sendMessage(message);
+
+				mClient.sendMessage("/q");
+				System.exit(0);
+
 				/*
-				// 서버 화면에도 메세지 출력
-				mServerGUI.appendMsg(message);
-				
-				// remove() 퇴장한 사용자 정보를 HashMap에서 없애기
-				mClientMap.remove(nick);*/
-				
-				
+				 * String message = mNickName + "님이 퇴장하셨습니다.\n";
+				 * 
+				 * // 서버에 접속 중인 모든 사용자에게 메세지 전송 mClient.sendMessage(message);
+				 * 
+				 * // 서버 화면에도 메세지 출력 mServerGUI.appendMsg(message);
+				 * 
+				 * // remove() 퇴장한 사용자 정보를 HashMap에서 없애기
+				 * mClientMap.remove(nick);
+				 */
+
 			}
 		});
-		
-		
 
 		// 윈도우 종료(x) 클릭 시 창 꺼짐 & 프로그램 종료
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
 
 		setBounds(800, 100, 400, 600);
 		setTitle("사용자 채팅 창");

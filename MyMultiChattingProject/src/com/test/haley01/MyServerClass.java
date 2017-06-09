@@ -34,54 +34,50 @@ public class MyServerClass extends JFrame implements ActionListener {
 
 	// 1-2 생성자 함수
 	public MyServerClass() throws IOException {
-		
-		
+
 		// 가운데 위치에 TA 넣기
 		add(mAllMessagesTa, BorderLayout.CENTER);
 		add(new JScrollPane(mAllMessagesTa));
-		add(panel, BorderLayout.SOUTH );
-		 
+		add(panel, BorderLayout.SOUTH);
+
 		panel.setLayout(new FlowLayout());
 		panel.add(mMessageTf);
 		panel.add(bt);
 
 		// 아래에 TF 넣기
-		//add(mMessageTf, BorderLayout.SOUTH);
-		
-		//mJScrollPane.setViewportView(mAllMessagesTa);
-		
+		// add(mMessageTf, BorderLayout.SOUTH);
+
+		// mJScrollPane.setViewportView(mAllMessagesTa);
+
 		this.addWindowListener(new WindowAdapter() {
-			
+
 			@Override
 			public void windowClosing(WindowEvent e) {
 				// TODO Auto-generated method stub
-				
+
 				System.out.println("사용자가 X 버튼 클릭");
-				
-		
-				
+
 			}
-			
+
 		});
 
 		// 엔터 이벤트
 		mMessageTf.addActionListener(this);
 		// send 버튼 클릭시
 		bt.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 				String msg = "[관리자] " + mMessageTf.getText() + "\n";
 				System.out.print(msg);
 				mServer.sendMessage(msg);
 				appendMsg(msg);
 				mMessageTf.setText("");
-				
+
 			}
 		});
-		
 
 		// 화면에 출력할 윈도우 창의 위치와 타이틀
 		setBounds(200, 100, 400, 600);
@@ -125,17 +121,15 @@ public class MyServerClass extends JFrame implements ActionListener {
 	} // end of main()
 
 	// 2. 재정의 함수
-	
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
-		
+
 		// 사용자가 입력한 메세지 가져오기
 		// 텍스트 아레아에 사용자가 입력한 메세지 출력후 개행
 		String msg = "[관리자] " + mMessageTf.getText() + "\n";
-		
+
 		// 콘솔 화면에 메세지 출력
 		System.out.print(msg);
 
@@ -149,8 +143,6 @@ public class MyServerClass extends JFrame implements ActionListener {
 		mMessageTf.setText("");
 
 	} // end of actionPerformed()
-	
-	
 
 	// 3. 사용자 정의 함수
 
@@ -158,7 +150,7 @@ public class MyServerClass extends JFrame implements ActionListener {
 	public void appendMsg(String msg) {
 
 		if (msg != null && msg.trim().length() > 0) {
-			
+
 			mAllMessagesTa.append(msg);
 
 		}
